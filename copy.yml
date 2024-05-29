@@ -1,0 +1,11 @@
+---
+- name: Copy Files
+  hosts: all
+
+  tasks:
+  - name: Copying files
+    copy:
+      src: /tmp/some.cfg
+      dest: /tmp/tempo
+      mode: 0755 
+

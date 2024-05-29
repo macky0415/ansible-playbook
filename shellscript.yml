@@ -1,0 +1,7 @@
+---
+- name: Shellscript
+  hosts: all
+
+  tasks: 
+  - name: Playbook for shellscript
+    shell: "/tmp/tmux.sh"

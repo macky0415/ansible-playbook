@@ -1,0 +1,20 @@
+---
+- name: Install Mariadb and Create Directory
+  hosts: all
+
+  tasks:
+  - name: Create Directory for Mariadb
+    file:
+      state: directory
+      path: /opt/mariadb
+      mode: 0755
+      owner: root
+      group: root
+
+  - name: Install Mariadb
+    get_url:
+      url: https://dlm.mariadb.com/3677148/Connectors/c/connector-c-3.3.8/mariadb-connector-c-3.3.8-rhel9-amd64.tar.gz
+      dest: /opt/mariadb
+      owner: root
+      group: root
+      mode: 0755

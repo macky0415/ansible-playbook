@@ -1,0 +1,22 @@
+---
+- name: Download JavaJDK Package
+  hosts: all
+
+  tasks:
+   - name: Create Directory
+     file: 
+       path: /opt/javajdk
+       state: directory
+       mode: 0755
+       owner: root
+       group: root
+
+   - name: Install JDK
+     get_url:
+       url: https://download.oracle.com/java/22/latest/jdk-22_linux-x64_bin.tar.gz
+       dest: /opt/javajdk
+       mode: 0755
+       owner: root
+       group: root
+
+    

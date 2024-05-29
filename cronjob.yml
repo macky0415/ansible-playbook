@@ -1,0 +1,15 @@
+---
+- name: Schedule cron job
+  hosts: all
+
+  tasks:
+    - name: Schedule a cron
+      cron:
+        name: This job is schedule by Ansible
+        minute: "0"
+        hour: "10"
+        day: "*"
+        month: "*"
+        weekday: "4"
+        user: root
+        job: "/tmp/tmux.sh"

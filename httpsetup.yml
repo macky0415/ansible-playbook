@@ -1,0 +1,31 @@
+---
+- name: Install httpd Package and open Firewall port
+  hosts: localhost
+
+  tasks:
+  - name: Install httpd package
+    yum:
+      name: httpd
+      state: present
+
+  - name: Check if the httpd is running
+    service: 
+     name: httpd
+     state: started
+  
+  - name: Open port 80 for http access
+    firewalld: 
+     permanent: true
+     port: 80/tcp
+     state: enabled
+
+  - name: enabled httpd
+    service:
+      name: httpd
+      enabled: yes
+
+  - name: Restart firewalld service to load firewall chages
+    service:
+      name: firewalld
+      state: restarted
+

@@ -1,0 +1,31 @@
+---
+- name: Create and Remove file
+  hosts: all
+
+  tasks:
+  - name: Create a directory
+    file: 
+      path: /tmp/seinfeld
+      owner: root
+      group: root
+      mode:  0770
+      state: directory
+
+  - name: Create a file in that directory
+    file:
+      path: /tmp/seinfeld/jerry
+      state: touch
+
+  - name: stat the new file jerry
+    stat:
+      path: /tmp/seinfeld/jerry
+    register: jf
+
+  - name: Show files status
+    debug:
+      msg: "File status and attributes: {{ jf }}"
+
+  - name: Remove file
+    file:
+      path: /tmp/seinfeld/jerry
+      state: absent

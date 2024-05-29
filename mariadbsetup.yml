@@ -1,0 +1,27 @@
+---
+- name: Install Mariadb
+  hosts: all
+
+  tasks:
+  - name: Install Mariadb
+    yum:
+      name: mariadb-server
+      state: present
+
+  - name: Start mariadb
+    service:
+      name: mariadb
+      state: started
+
+  - name: Enable mariadb boot start
+    service:
+      name: mariadb
+      enabled: yes
+
+  - name: Reload mariadb
+    service: 
+      name: mariadb
+      state: restarted
+
+ 
+

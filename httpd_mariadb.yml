@@ -1,0 +1,35 @@
+---
+- name: Install httpd
+  hosts: all
+
+  tasks:
+    - name: Ensure httpd is installed
+      package:
+        name: httpd
+        state: present
+
+    - name: Ensure httpd is running
+      service:
+        name: httpd
+        state: reloaded
+
+    - name: Ensure httpd is enabled
+      service:
+        name: httpd
+        enabled: yes
+          
+
+    - name: Install MariaDb
+      package:
+        name: mariadb-server
+        state: present
+
+    - name: Check if the Mariadb is running
+      service:
+        name: mariadb
+        state: started
+
+    - name: Enabling MariaDB
+      service:
+        name: mariadb
+        enabled: yes 
